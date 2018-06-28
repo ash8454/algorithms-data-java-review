@@ -1,5 +1,7 @@
 package Queues;
 
+import HashTable.Employee;
+
 import java.util.NoSuchElementException;
 
 public class ArrayQueue {
@@ -11,15 +13,40 @@ public class ArrayQueue {
         queue = new Employee[capacity];
     }
 
+//    public void add(Employee employee){
+//        if (back == queue.length) {
+//            Employee[] newArray = new Employee[2 * queue.length];
+//            System.arraycopy(queue, 0, newArray, 0, queue.length);
+//            queue = newArray;
+//        }
+//
+//        queue[back] = employee;
+//        back++;
+//    }
+
     public void add(Employee employee){
-        if (back == queue.length) {
+        if (back == queue.length - 1) {
             Employee[] newArray = new Employee[2 * queue.length];
             System.arraycopy(queue, 0, newArray, 0, queue.length);
             queue = newArray;
         }
 
+        //0 - jane - front
+        //1 - john
+        //2 - mary
+        //3 - mike
+        //4   - bill -  back
+        //5
+        //6
+        //7
+
         queue[back] = employee;
-        back++;
+        if (back < queue.length - 1){
+            back++;
+        } else {
+            back = 0;
+        }
+
     }
 
     public Employee remove(){
