@@ -6,8 +6,6 @@ import java.util.LinkedList;
 public class FindDuplicateCharactersInString {
     public static void main(String[] args){
         String testString = "abcdeegh";
-        StringBuilder finalString = new StringBuilder();
-        LinkedList<Character> charList = new LinkedList<>();
         HashMap<Character, Integer> strMap = new HashMap<>();
         int maxCount = 1;
         for(int i=0; i<testString.length(); i++){
