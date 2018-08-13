@@ -100,7 +100,6 @@ public class DoubleLinkedList {
 
     }
 
-
     public static void main(String[] args){
         DoubleLinkedList doublyList = new DoubleLinkedList();
         doublyList.insertLast(5);
