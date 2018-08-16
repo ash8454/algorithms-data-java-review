@@ -26,6 +26,72 @@ public class LinkedList {
         printList(); //print list
     }
 
+    public static String deleteAtHead(LinkedList list) {
+
+        Node head = list.headNode;
+        if (head.nextElement != null){
+            head.nextElement = head.nextElement.nextElement;
+        }
+
+        // Write - Your - Code
+        return elements(list);
+    }
+
+    public static int length(LinkedList list){
+
+        // Write - Your - Code
+        Node headNode = list.headNode;
+        if (headNode.nextElement == null){
+            return 0;
+        }
+
+        int count= 0;
+        while (headNode.nextElement != null){
+            headNode.nextElement = headNode.nextElement.nextElement;
+            count++;
+        }
+        return count;
+    }
+
+    public static String reverse(LinkedList list) {
+        //4 --> 3 --> 2 --> 1
+        //headNode = list.headNode
+        //prevNode = null;
+        //nextNode = null;
+        //while headNode.nextElement ! = null
+           //next = curr.next;
+           //curr.next = prev;
+           // prev = curr;
+           // curr = next;
+
+        Node headNode = list.headNode;
+        if (headNode.nextElement == null){
+            return elements(list);
+        }
+        Node next = null;
+        Node prev = null;
+        while (headNode.nextElement != null){
+            next = headNode.nextElement;
+            headNode.nextElement = prev;
+            prev = headNode;
+            headNode = next;
+        }
+        headNode.nextElement = prev;
+        return elements(list);
+    }
+
+    public static boolean searchNode(LinkedList list, int value){
+        Node current = list.headNode;
+        while (current != null){
+            if (current.data == value){
+                return true;
+            }
+            current = current.nextElement;
+        }
+        // Write - Your - Code
+        return false;
+    }
+
     //Insertion at head
     public String insertAtEnd(LinkedList list, int value){
         Node newNode = new Node();
@@ -41,6 +107,21 @@ public class LinkedList {
         }
         current.nextElement = newNode;
         return elements(list);
+    }
+
+    public static boolean detectLoop(LinkedList list){
+        boolean isLoop = false;
+        Node slowPtr = null;
+        Node fastPtr = null;
+        while (slowPtr != null && fastPtr != null && fastPtr.nextElement != null){
+            slowPtr = slowPtr.nextElement;
+            fastPtr = fastPtr.nextElement.nextElement;
+            if (slowPtr == fastPtr){
+                isLoop = true;
+                return isLoop;
+            }
+        }
+       return isLoop;
     }
 
     //Helper Function to convert List elements in a single string
@@ -101,6 +182,7 @@ public class LinkedList {
         }
         list.insertAtEnd(list, 11);
         list.printList();
+        System.out.println(list.length(list));
 
     }
 
